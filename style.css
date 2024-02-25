@@ -119,6 +119,30 @@ form#entry-form button:hover {
     padding: 10px;
 }
 
+input[type="date"] {
+    background-color: white; /* Ensure the background is white */
+    color: black; /* Text color */
+    border: 1px solid #ccc; /* Border similar to typical input fields */
+    padding: 5px 10px; /* Padding for a larger tap area */
+    font-size: 16px; /* Mobile-friendly font size */
+    -webkit-appearance: none; /* Removes default webkit styles */
+    appearance: none; /* Standard way to remove default styles */
+    border-radius: 4px; /* Optional: rounds the corners of the input field */
+}
+
+/* Style the placeholder text */
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+    color: black;
+}
+
+/* Style the dropdown icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: none; /* Reset grayscale or any filter */
+}
+
 
 @media (max-width: 768px) {
     /* Adjust styles for tablets and below */
