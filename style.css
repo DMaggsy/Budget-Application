@@ -154,6 +154,16 @@ input[type="date"] {
     width: 100%; /* Make sure it spans the width of its container */
 }
 
+#entry-date {
+    background-color: white;
+    color: black;
+    padding: 8px;
+    font-size: 16px;
+    opacity: 1;
+    border-radius: 4px;
+    display: block;
+
+}
 
 /* Style the placeholder text */
 input[type="date"]::-webkit-datetime-edit-text,
