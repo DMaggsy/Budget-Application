@@ -39,19 +39,24 @@ function handleAddEntry(event) {
   }
   
   function renderEntries(entries) {
+    const sortedEntries = entries.sort((a, b) => new Date(a.date) - new Date(b.date));
     const entriesList = document.getElementById('entries-list');
     entriesList.innerHTML = ''; // Clear existing entries
-    entries.forEach((entry, index) => {
+
+    sortedEntries.forEach((entry, index) => {
         const entryElement = document.createElement('li');
+        entryElement.className = 'entry';
         entryElement.innerHTML = `
-            <span>${entry.date}</span>
-            <span>${entry.type === 'income' ? '+' : '-'} £${entry.amount}</span>
-            <span>${entry.description}</span>
-            <button onclick="handleDeleteEntry(${index})">Delete</button>
+            <span class="entry-date">${entry.date}</span>
+            <span class="entry-amount">${entry.type === 'income' ? '+' : '-'} £${entry.amount.toFixed(2)}</span>
+            <div class="entry-description">${entry.description}</div>
+            <button onclick="handleDeleteEntry(${index})" class="delete-btn">Delete</button>
         `;
         entriesList.appendChild(entryElement);
     });
 }
+
+
   
   function updateBalanceDisplay(entries) {
     let income = 0;

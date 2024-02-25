@@ -3,6 +3,7 @@ body {
     padding: 20px;
     margin: 0;
     background-color: #f4f4f4;
+    font-size: calc(14px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
 #balance-display, #summary {
@@ -57,14 +58,32 @@ form#entry-form button:hover {
 }
 
 #entries-list li {
-    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 15px; /* Increase gap for more space between elements */
     padding: 10px;
+    background-color: #fff;
     margin-bottom: 10px;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.entry-date, .entry-amount {
+    flex-shrink: 0; /* Prevent these elements from shrinking */
+    margin-right: 10px; /* Ensure there's space between the date/amount and the description */
+}
+
+.entry-description {
+    flex-grow: 1; /* Allow the description to take up remaining space */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; /* Keep content on one line to manage spacing */
+}
+
+
+.delete-btn {
+    margin-left: auto; /* Pushes the button to the end of the flex container */
 }
 
 #entries-list li span {
@@ -91,3 +110,42 @@ form#entry-form button:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
+
+@media (max-width: 768px) {
+    /* Adjust styles for tablets and below */
+    .container, #entries-list li {
+        padding: 5px;
+    }
+
+    .entry-date, .entry-amount, .entry-description, .delete-btn {
+        font-size: 14px; /* Make text smaller */
+    }
+
+    .form-control input, .form-control button {
+        padding: 10px;
+        font-size: 14px; /* Adjust form elements for easier touch interaction */
+    }
+
+    .entry-description {
+        white-space: normal; /* Allow descriptions to wrap on smaller screens */
+        text-overflow: clip; /* Since we're allowing wrapping, clipping the overflow doesn't hide text */
+    }
+}
+
+@media (max-width: 480px) {
+    /* Adjust styles for phones */
+    body {
+        padding: 5px;
+    }
+
+    #entries-list li {
+        flex-direction: row; /* Display items in row */
+        align-items: center; /* Centralise the items */
+    }
+
+    .form-control label, .form-control input, .form-control select, .form-control button {
+        width: 100%; /* Make form elements take full width */
+        margin: 5px 0; /* Reduce margin */
+    }
+}
+
