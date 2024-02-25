@@ -21,7 +21,7 @@ const appState = {
     }
 };
   
-  function handleAddEntry(event) {
+function handleAddEntry(event) {
     event.preventDefault();
     const amount = parseFloat(document.getElementById('amount').value);
     const description = document.getElementById('description').value;
@@ -30,8 +30,11 @@ const appState = {
     const entry = { type, amount, description, id: Date.now() };
     appState.addEntry(entry);
     
-    // Clear form
-    document.getElementById('entry-form').reset();
+    // Explicitly clear each input field
+    document.getElementById('amount').value = '';
+    document.getElementById('description').value = '';
+    // Optionally reset the type to a default value if needed
+    document.querySelector('input[name="entry-type"][value="income"]').checked = true;
   }
   
   function renderEntries(entries) {
