@@ -26,8 +26,9 @@ function handleAddEntry(event) {
     const amount = parseFloat(document.getElementById('amount').value);
     const description = document.getElementById('description').value;
     const type = document.querySelector('input[name="entry-type"]:checked').value;
+    const date = document.getElementById('entry-date').value; // Capture the date value
     
-    const entry = { type, amount, description, id: Date.now() };
+    const entry = { type, amount, description, date, id: Date.now() };
     appState.addEntry(entry);
     
     // Explicitly clear each input field
@@ -41,15 +42,16 @@ function handleAddEntry(event) {
     const entriesList = document.getElementById('entries-list');
     entriesList.innerHTML = ''; // Clear existing entries
     entries.forEach((entry, index) => {
-      const entryElement = document.createElement('li');
-      entryElement.innerHTML = `
-        <span>${entry.type === 'income' ? '+' : '-'} £${entry.amount}</span>
-        <span>${entry.description}</span>
-        <button onclick="handleDeleteEntry(${index})">Delete</button>
-      `;
-      entriesList.appendChild(entryElement);
+        const entryElement = document.createElement('li');
+        entryElement.innerHTML = `
+            <span>${entry.date}</span>
+            <span>${entry.type === 'income' ? '+' : '-'} £${entry.amount}</span>
+            <span>${entry.description}</span>
+            <button onclick="handleDeleteEntry(${index})">Delete</button>
+        `;
+        entriesList.appendChild(entryElement);
     });
-  }
+}
   
   function updateBalanceDisplay(entries) {
     let income = 0;
