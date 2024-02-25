@@ -16,8 +16,8 @@
         <label for="expense">Expense</label>
         <input type="number" id="amount" placeholder="Amount" step="0.01">
         <input type="text" id="description" placeholder="Description">
-        <input type="date" id="entry-date" placeholder="Date">
-        <button type="submit">Add Entry</button>
+        <input type="date" id="entry-date" placeholder="yyyy-mm-dd" onfocus="(this.type='date')" onblur="if(!this.value)this.type='text'">
+        <button type="submit" id="add-entry-btn">Add Entry</button>
     </form>
     <ul id="entries-list"></ul>
     <div id="chart-container">
