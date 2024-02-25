@@ -40,7 +40,7 @@ const appState = {
     entries.forEach((entry, index) => {
       const entryElement = document.createElement('li');
       entryElement.innerHTML = `
-        <span>${entry.type === 'income' ? '+' : '-'} $${entry.amount}</span>
+        <span>${entry.type === 'income' ? '+' : '-'} £${entry.amount}</span>
         <span>${entry.description}</span>
         <button onclick="handleDeleteEntry(${index})">Delete</button>
       `;
@@ -49,7 +49,21 @@ const appState = {
   }
   
   function updateBalanceDisplay(entries) {
-    // Implement this function to update balance and summary based on entries
+    let income = 0;
+    let expenses = 0;
+  
+    entries.forEach(entry => {
+      if (entry.type === 'income') {
+        income += entry.amount;
+      } else if (entry.type === 'expense') {
+        expenses += entry.amount;
+      }
+    });
+  
+    const balance = income - expenses;
+  
+    document.getElementById('balance-display').textContent = `Balance: £${balance.toFixed(2)}`;
+    document.getElementById('summary').textContent = `Income: £${income.toFixed(2)} | Expenses: £${expenses.toFixed(2)}`;
   }
   
   document.getElementById('entry-form').addEventListener('submit', handleAddEntry);
