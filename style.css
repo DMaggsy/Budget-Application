@@ -1,3 +1,4 @@
+/* Base Styles */
 body {
     font-family: 'Arial', sans-serif;
     padding: 20px;
@@ -6,29 +7,47 @@ body {
     font-size: calc(14px + (16 - 14) * ((100vw - 300px) / (1600 - 300)));
 }
 
-#balance-display, #summary {
-    background-color: #fff;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
+/* Form General Styles */
 form#entry-form {
     background-color: #fff;
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items */
+    gap: 20px; /* Creates space between form elements */
 }
 
+/* Input Fields Styles */
 form#entry-form input[type="number"],
-form#entry-form input[type="text"] {
+form#entry-form input[type="text"],
+form#entry-form input[type="date"] {
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 4px;
+    display: block;
     width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border-radius: 5px;
-    border: 1px solid #ddd;
+    margin: 10px 0; /* Adjusted margin for all inputs */
+    opacity: 1;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+/* Special Styles for Date Input */
+input[type="date"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
+
+/* Radio Buttons and Labels (Horizontal Layout) */
+.form-radio-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 form#entry-form input[type="radio"] {
@@ -37,21 +56,30 @@ form#entry-form input[type="radio"] {
 
 form#entry-form label {
     margin-right: 15px;
+    color: #333;
+    font-size: 16px; /* Mobile-friendly font size */
 }
 
-form#entry-form button {
+/* Button Styles */
+form#entry-form button,
+#export-btn,
+#add-entry-btn {
     background-color: #5cb85c;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
 }
 
-form#entry-form button:hover {
+form#entry-form button:hover,
+#add-entry-btn:hover {
     background-color: #4cae4c;
 }
 
+/* Entries List Styles */
 #entries-list {
     list-style-type: none;
     padding: 0;
@@ -61,7 +89,7 @@ form#entry-form button:hover {
     display: flex;
     align-items: center;
     justify-content: start;
-    gap: 15px; /* Increase gap for more space between elements */
+    gap: 15px;
     padding: 10px;
     background-color: #fff;
     margin-bottom: 10px;
@@ -69,40 +97,18 @@ form#entry-form button:hover {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.entry-date, .entry-amount {
-    flex-shrink: 0; /* Prevent these elements from shrinking */
-    margin-right: 10px; /* Ensure there's space between the date/amount and the description */
-}
-
 .entry-description {
-    flex-grow: 1; /* Allow the description to take up remaining space */
+    flex-grow: 1;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap; /* Keep content on one line to manage spacing */
+    white-space: nowrap;
 }
-
 
 .delete-btn {
-    margin-left: auto; /* Pushes the button to the end of the flex container */
+    margin-left: auto;
 }
 
-#entries-list li span {
-    margin-right: 10px;
-}
-
-#entries-list li button {
-    background-color: #d9534f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 10px;
-    cursor: pointer;
-}
-
-#entries-list li button:hover {
-    background-color: #c9302c;
-}
-
+/* Chart Container Styles */
 #chart-container {
     background-color: #fff;
     padding: 20px;
@@ -111,6 +117,7 @@ form#entry-form button:hover {
     margin-top: 20px;
 }
 
+/* Export Options Styles */
 #export-options {
     display: flex;
     justify-content: center;
@@ -119,101 +126,31 @@ form#entry-form button:hover {
     padding: 10px;
 }
 
-#entry-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center align items */
-    gap: 20px; /* Creates space between form elements */
-}
-
-#add-entry-btn {
-    margin-top: 20px; /* Adds space above the button */
-    padding: 10px 20px; /* Adjust padding to increase the button size */
-    font-size: 16px; /* Increases the font size for better readability */
-    cursor: pointer; /* Changes cursor to pointer on hover */
-    border: none; /* Removes border */
-    border-radius: 5px; /* Optional: Adds rounded corners */
-    background-color: #007bff; /* Example background color */
-    color: white; /* Text color */
-}
-
-#add-entry-btn:hover {
-    background-color: #0056b3; /* Darker shade on hover for feedback */
-}
-
-input[type="date"] {
-    background-color: white; /* Set a definitive background */
-    opacity: 1; /* Ensure it's fully opaque */
-    border: 1px solid #ccc; /* Define a border */
-    padding: 8px; /* Add some padding for touch friendliness */
-    font-size: 16px; /* Mobile-friendly font size */
-    -webkit-appearance: none; /* Attempt to remove iOS inner shadow */
-    appearance: none; /* Standard way to remove default styles */
-    border-radius: 4px; /* Optional: rounds the corners */
-    display: block; /* Ensure it's not inline */
-    width: 100%; /* Make sure it spans the width of its container */
-}
-
-#entry-date {
-    background-color: white;
-    color: black;
-    padding: 8px;
-    font-size: 16px;
-    opacity: 1;
-    border-radius: 4px;
-    display: block;
-
-}
-
-/* Style the placeholder text */
-input[type="date"]::-webkit-datetime-edit-text,
-input[type="date"]::-webkit-datetime-edit-month-field,
-input[type="date"]::-webkit-datetime-edit-day-field,
-input[type="date"]::-webkit-datetime-edit-year-field {
-    color: black;
-}
-
-/* Style the dropdown icon */
-input[type="date"]::-webkit-calendar-picker-indicator {
-    filter: none; /* Reset grayscale or any filter */
-}
-
-
+/* Responsive Adjustments */
 @media (max-width: 768px) {
-    /* Adjust styles for tablets and below */
-    .container, #entries-list li {
-        padding: 5px;
-    }
-
-    .entry-date, .entry-amount, .entry-description, .delete-btn {
-        font-size: 14px; /* Make text smaller */
-    }
-
+    .entry-date, .entry-amount, .entry-description, .delete-btn,
     .form-control input, .form-control button {
-        padding: 10px;
-        font-size: 14px; /* Adjust form elements for easier touch interaction */
+        font-size: 14px;
     }
 
     .entry-description {
-        white-space: normal; /* Allow descriptions to wrap on smaller screens */
-        text-overflow: clip; /* Since we're allowing wrapping, clipping the overflow doesn't hide text */
+        white-space: normal;
+        text-overflow: clip;
     }
 }
 
 @media (max-width: 480px) {
-    /* Adjust styles for phones */
     body {
         padding: 5px;
     }
 
     #entries-list li {
-        flex-direction: row; /* Display items in row */
-        align-items: center; /* Centralise the items */
+        flex-direction: row;
+        align-items: center;
     }
 
     .form-control label, .form-control input, .form-control select, .form-control button {
-        width: 100%; /* Make form elements take full width */
-        margin: 5px 0; /* Reduce margin */
+        width: 100%;
+        margin: 5px 0;
     }
 }
-

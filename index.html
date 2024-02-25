@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>I&E</title>
     <link rel="stylesheet" href="style.css"> <!-- Assuming your CSS file is named style.css -->
 </head>
+
 <body>
     <div id="balance-display">Balance: £0</div>
     <div id="summary">Income: £0 | Expenses: £0</div>
     <form id="entry-form">
-        <input type="radio" id="income" name="entry-type" value="income" checked>
-        <label for="income">Income</label>
-        <input type="radio" id="expense" name="entry-type" value="expense">
-        <label for="expense">Expense</label>
+
+        <div class="form-radio-group">
+            <input type="radio" id="income" name="entry-type" value="income" checked>
+            <label for="income">Income</label>
+            <input type="radio" id="expense" name="entry-type" value="expense">
+            <label for="expense">Expense</label>
+        </div>
+
         <input type="number" id="amount" placeholder="Amount" step="0.01">
         <input type="text" id="description" placeholder="Description">
-        <div class="date-input-container" style="position: relative;">
-            <input type="date" id="entry-date" onfocus="hideLabel()" onblur="showLabel()">
-        </div>        
+        <label for="entry-date">Date</label>
+        <input type="date" id="entry-date">
         <button type="submit" id="add-entry-btn">Add Entry</button>
     </form>
     <ul id="entries-list"></ul>
     <div id="chart-container">
         <canvas id="budgetChart"></canvas>
-    </div>    
+    </div>
     <div id="export-options" style="margin-top: 20px;">
         <select id="export-type">
             <option value="csv">CSV</option>
@@ -40,4 +45,5 @@
     <script src="budget.js"></script>
     <script src="chart.js"></script>
 </body>
+
 </html>
