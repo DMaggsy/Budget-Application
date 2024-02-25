@@ -1,1 +1,27 @@
-<!-- www.youtube.com/CodeExplained -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I&E</title>
+    <link rel="stylesheet" href="style.css"> <!-- Assuming your CSS file is named style.css -->
+</head>
+<body>
+    <div id="balance-display">Balance: £0</div>
+    <div id="summary">Income: £0 | Expenses: £0</div>
+    <form id="entry-form">
+        <input type="radio" id="income" name="entry-type" value="income" checked>
+        <label for="income">Income</label>
+        <input type="radio" id="expense" name="entry-type" value="expense">
+        <label for="expense">Expense</label>
+        <input type="number" id="amount" placeholder="Amount">
+        <input type="text" id="description" placeholder="Description">
+        <button type="submit">Add Entry</button>
+    </form>
+    <ul id="entries-list"></ul>
+    <div id="chart-container"></div>
+    
+    <script src="budget.js"></script>
+    <script src="chart.js"></script>
+</body>
+</html>
