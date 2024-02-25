@@ -111,6 +111,15 @@ form#entry-form button:hover {
     margin-top: 20px;
 }
 
+#export-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+}
+
+
 @media (max-width: 768px) {
     /* Adjust styles for tablets and below */
     .container, #entries-list li {
